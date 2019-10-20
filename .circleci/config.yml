@@ -29,21 +29,47 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  deploy:
+  npm-deploy:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: build package
+          command: npm run ci-build
+      - run:
           name: Publish package
           command: npm run ci-publish
+  docs-deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@klukas.net"
+            git config user.name "ci-build"
+      - run:
+          name: build document
+          command: npm run ci-build:docs
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages -d ~/repo/docs
             
 workflows:
   version: 2
   deploy:
     jobs:
       - lint
-      - deploy:
+      - npm-deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
+      - docs-deploy:
           requires:
             - lint
           filters:
