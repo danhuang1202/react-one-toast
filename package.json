@@ -15,20 +15,17 @@
     "build:type": "tsc --project ./config/tsconfig.type.json",
     "build:docs": "build-storybook -c .storybook -o docs",
     "storybook": "start-storybook -h localhost -p 9001 -c .storybook --ci",
-    "lint": "eslint './{src,__tests__,.stories}/**/*.{ts,tsx}'",
-    "test": "BABEL_ENV=test jest --no-cache --config ./config/jest.config.js --coverage=$ENABLE_COVERAGE --coverageDirectory=$COVERAGE_DIRECTORY",
-    "test:update": "npm run test -- -u",
-    "prettier": "prettier --check ./**/*.{ts,tsx,js,css,json}"
+    "lint": "eslint './{src,.stories}/**/*.{ts,tsx}'",
+    "prettier": "prettier --check ./**/*.{ts,tsx,css,json}"
   },
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "./**/*.{ts,tsx,js,css,json}": [
+    "./**/*.{ts,tsx,css,json}": [
       "prettier --write",
       "git add"
     ],
@@ -39,7 +36,9 @@
     "url": "https://github.com/danhuang1202/react-one-toast"
   },
   "keywords": [
-    "react"
+    "react",
+    "toast",
+    "notification"
   ],
   "author": "danhuang",
   "license": "ISC",
