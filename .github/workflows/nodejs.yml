@@ -20,7 +20,7 @@ jobs:
       run: npm run lint
 
   npm_publish:
-    needs: lint && test
+    needs: lint_and_test
     runs-on: ubuntu-latest
     strategy:
       matrix:
