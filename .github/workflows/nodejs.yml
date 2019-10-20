@@ -3,7 +3,7 @@ name: Node
 on: [push, pull_request]
 
 jobs:
-  lint && test:
+  lint_and_test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,7 +19,7 @@ jobs:
     - name: lint
       run: npm run lint
 
-  npm publish:
+  npm_publish:
     needs: lint && test
     runs-on: ubuntu-latest
     strategy:
