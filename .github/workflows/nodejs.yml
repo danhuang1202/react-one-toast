@@ -3,24 +3,7 @@ name: Node
 on: [push, pull_request]
 
 jobs:
-  lint_and_test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: install
-      run: npm install
-    - name: lint
-      run: npm run lint
-
-  npm_publish:
-    needs: lint_and_test
+  docs_publish:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -34,9 +17,10 @@ jobs:
     - name: install
       run: npm install
     - name: build
-      run: npm run ci-build --if-present
-    - name: publish
-      run: npm run ci-publish
+      run: npm run ci-build:docs --if-present
+    - name: GitHub Pages Deploy
+      uses: maxheld83/ghpages@v0.2.1
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        BUILD_DIR: docs
+
