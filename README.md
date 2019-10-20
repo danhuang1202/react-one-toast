@@ -1,7 +1,8 @@
 # react-one-toast
+[![NPM version](https://img.shields.io/npm/v/react-one-toast.svg)](https://www.npmjs.com/package/react-one-toast)
 
 Easily show notification from buttom to top with React.
-The main differnet with other libraries is that only one `Toast` will displayed with multiple notifacations, the later notification will replace the previous one. 
+The main differnet with other libraries is that only one `Toast` will displayed with multiple notifacations, the later notification will replace the previous one. <a href="https://danhuang1202.github.io/react-one-toast/">ee demo here</a> 
 
 ## Installation
 ```
