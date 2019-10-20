@@ -1,3 +1,9 @@
+## <small>1.0.1 (2019-10-20)</small>
+
+* fix: typo ([dc7be9e](https://github.com/danhuang1202/react-one-toast/commit/dc7be9e))
+* docs: add document link ([43e6655](https://github.com/danhuang1202/react-one-toast/commit/43e6655))
+* docs: add publish docs script ([46433d5](https://github.com/danhuang1202/react-one-toast/commit/46433d5))
+
 ## 1.0.0 (2019-10-20)
 
 * ci: add workflow to circle ci config ([84d978a](https://github.com/danhuang1202/react-one-toast/commit/84d978a))
