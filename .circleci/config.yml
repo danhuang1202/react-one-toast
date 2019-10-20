@@ -6,7 +6,7 @@ defaults: &defaults
     - image: circleci/node:10
 
 jobs:
-  test:
+  lint:
     <<: *defaults  
     steps:
       - checkout
@@ -38,3 +38,14 @@ jobs:
           name: Publish package
           command: npm run ci-publish
             
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - lint
+      - deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: master
