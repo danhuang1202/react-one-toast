@@ -1,0 +1,16 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  transform: translateY(100%);
+  overflow: hidden;
+}
+
+.container :global(.previous-content),
+.container :global(.current-content) {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDirs": ["src", "stories"],
+    "declaration": true,
+    "emitDeclarationOnly": true
+  },
+  "include": ["src", "stories", "config", "__tests__"],
+  "exclude": ["node_modules"]
+}
